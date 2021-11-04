@@ -2,16 +2,38 @@
 
 {% block content %}
 
+<form action="/events" method="post">
+    <label for="Event name">Event name</label>
+    <input type="text" name="Event name" id="Event name">
+
+    <label for="date">Event date</label>
+    <input type="date" name="date" id="date">
+
+    <label for="attendance">Attendance</label>
+    <input type="text" name="attendance" id="attendance">
+
+    <label for="city">City</label>
+    <input type="text" name="city" id="city">
+
+    <label for="description">Event description</label>
+    <input type="text" name="description" id="description">
+
+    <input type="submit" value="Add event">
+
+  </form>
+  <hr>
+
 <h1>All Events</h1>
 
 <div class="event-card">
-  {% for event in events_list %}
+  {% for event in event_list %}
   <div class="event">
-    <h2>When: {{ event.date.strftime("%d %b %Y") }}</h2>
-    <h3>{{ order.topping }}</h3>
-    <h4></h4>
-    <h5>Quantity: {{ order.quantity }}</h5>
-    <a href="/orders/{{orders.index(order)}}">Show Order</a>
+    <h2>{{ event.name }}</h2>
+    <h3>Date: {{ event.date.strftime("%d %b %Y") }}</h3>
+    <h4>Attendance: {{ event.number_of_guests }}</h4>
+    <h5>City: {{ event.rm_location }}</h5>
+    <p> {{ event.description }} </p>
+    <a href="/events/{{event_list.index(event)}}">Show event</a>
   </div>
   {% endfor %}
 </div>
