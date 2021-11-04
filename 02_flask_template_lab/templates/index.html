@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>All Events</h1>
+
+<div class="event-card">
+  {% for event in events_list %}
+  <div class="event">
+    <h2>When: {{ event.date.strftime("%d %b %Y") }}</h2>
+    <h3>{{ order.topping }}</h3>
+    <h4></h4>
+    <h5>Quantity: {{ order.quantity }}</h5>
+    <a href="/orders/{{orders.index(order)}}">Show Order</a>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
